@@ -1,10 +1,10 @@
 module "varset" {
   source  = "app.terraform.io/tfo-apj-demos/varsets/tfe"
   version = "0.0.1"
-  
+
   tfc_organization = "tfo-apj-demos"
   varset_name = "vcenter_credentials"
-  description = "Credentials for vCenter, rotated daily."
+  description = "Credentials for vCenter, rotated from Vault daily."
 
   varset_variables = [
     {
