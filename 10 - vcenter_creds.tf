@@ -1,4 +1,4 @@
-module "varset" {
+module "vcenter_credentials" {
   source  = "app.terraform.io/tfo-apj-demos/varsets/tfe"
   version = "0.0.1"
 
