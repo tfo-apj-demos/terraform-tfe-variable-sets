@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - main
+  schedule:
+        - cron:  '0 */8 * * *'
+        
 
 env:
   TF_CLOUD_ORGANIZATION: "tfo-apj-demos"
@@ -41,4 +44,4 @@ jobs:
         id: apply
         with:
           run: ${{ steps.apply-run.outputs.run_id }}
-          comment: "Apply Run from GitHub Actions CI ${{ github.sha }}"
+          comment: "GitHub Action from ${{ github.sha }}"
