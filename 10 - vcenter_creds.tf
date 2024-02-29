@@ -3,13 +3,13 @@ module "vcenter_credentials" {
   version = "~> 0.0"
 
   tfc_organization = "tfo-apj-demos"
-  varset_name = "__gcve_vcenter"
+  varset_name = "__gcve_vcenter_variables"
   workspace_tags = [ "vcenter" ]
 
   varset_variables = [
     {
       name = "VSPHERE_USER"
-      value = data.vault_generic_secret.this.data.username
+      value = "${data.vault_generic_secret.this.data.username}@hashicorp.local"
       category = "env"
     },
     {
