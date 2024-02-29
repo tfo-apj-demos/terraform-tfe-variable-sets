@@ -1,9 +1,10 @@
 module "vcenter_credentials" {
   source  = "app.terraform.io/tfo-apj-demos/varsets/tfe"
-  version = "0.0.1"
+  version = "~> 0.0"
 
   tfc_organization = "tfo-apj-demos"
-  varset_name = "vcenter_credentials"
+  varset_name = "__gcve_vcenter"
+  workspace_tags = [ "vmware" ]
 
   varset_variables = [
     {
