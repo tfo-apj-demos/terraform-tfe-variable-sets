@@ -1,3 +1,11 @@
+locals {
+  nsx_vars = [
+    "NSXT_USERNAME",
+    "NSXT_PASSWORD",
+    "NSXT_MANAGER_HOST"
+  ]
+}
+
 module "nsx_credentials" {
   source  = "app.terraform.io/tfo-apj-demos/varsets/tfe"
   version = "~> 0.0"
@@ -6,22 +14,16 @@ module "nsx_credentials" {
   varset_name = "__gcve_nsx_variables"
   workspace_tags = [ "vcenter" ]
 
-  varset_variables = [
-    {
-      name = "NSXT_USERNAME"
-      value = data.vault_generic_secret.this.data.username
-      category = "env"
-    },
-    {
-      name = "NSXT_PASSWORD"
-      value = data.vault_generic_secret.this.data.password
-      category = "env"
-      sensitive = true
-    },
-    {
-      name = "NSXT_MANAGER_HOST"
-      value = var.vcenter_address
+  varset_variables = [ for variable_name in local.nsx_vars: {
+      name = "${variable_name}"
+      value = data.hcp_vault_secrets_secret.nsx["${variable_name}"].secret_value
       category = "env"
     }
   ]
+}
+
+data "hcp_vault_secrets_secret" "nsx" {
+  for_each = toset(local.nsx_vars)
+  app_name    = "nsx-gcve"
+  secret_name = each.value
 }
