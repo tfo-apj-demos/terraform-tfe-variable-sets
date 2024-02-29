@@ -4,7 +4,7 @@ module "vcenter_credentials" {
 
   tfc_organization = "tfo-apj-demos"
   varset_name = "__gcve_vcenter"
-  workspace_tags = [ "vmware", "vcenter", "vsphere" ]
+  workspace_tags = [ "vcenter" ]
 
   varset_variables = [
     {
