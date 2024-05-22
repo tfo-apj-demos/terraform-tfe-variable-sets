@@ -9,7 +9,7 @@ locals {
 
 module "boundary_service_account" {
   source  = "app.terraform.io/tfo-apj-demos/varsets/tfe"
-  version = "0.0.1"
+  version = "0.0.5"
 
   tfc_organization = "tfo-apj-demos"
   varset_name = "boundary_service_account"
