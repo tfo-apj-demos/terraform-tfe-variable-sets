@@ -25,6 +25,6 @@ module "boundary_service_account" {
 
 data "hcp_vault_secrets_secret" "boundary_service_account" {
   for_each = toset(local.boundary_service_account_vars)
-  app_name    = "boundary-service-account"
+  app_name    = "hcp-boundary"
   secret_name = each.value
 }
