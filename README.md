@@ -1,0 +1,2 @@
+This repo contains Terraform code that manages variable sets in HCP Terraform.
+Variable names and values are retrieved from HCP Vault Secrets, and pushed into a variable set, then applied to Workspaces with matching tags.
