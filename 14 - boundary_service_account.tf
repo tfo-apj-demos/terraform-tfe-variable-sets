@@ -20,7 +20,7 @@ module "boundary_service_account" {
       category = "terraform"
     }
   ]
-  apply_to_workspace_tags = ["boundary_management"]
+  workspace_tags = ["boundary_management"]
 }
 
 data "hcp_vault_secrets_secret" "boundary_service_account" {
