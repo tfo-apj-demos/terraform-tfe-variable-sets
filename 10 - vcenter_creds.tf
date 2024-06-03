@@ -27,5 +27,5 @@ module "vcenter_credentials" {
 }
 
 data "vault_generic_secret" "this" {
-  path = "ldap/creds/vsphere_access"
+  path = "ldap/creds/vm_builder"
 }
