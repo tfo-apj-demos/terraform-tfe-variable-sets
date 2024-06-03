@@ -9,12 +9,12 @@ module "vcenter_credentials" {
   varset_variables = [
     {
       name = "VSPHERE_USER"
-      value = "${data.vault_generic_secret.this.data.username}@hashicorp.local"
+      value = "${data.vault_ldap_static_credentials.this.username}@hashicorp.local"
       category = "env"
     },
     {
       name = "VSPHERE_PASSWORD"
-      value = data.vault_generic_secret.this.data.password
+      value = data.vault_ldap_static_credentials.this.password
       category = "env"
       sensitive = true
     },
@@ -26,6 +26,11 @@ module "vcenter_credentials" {
   ]
 }
 
-data "vault_generic_secret" "this" {
-  path = "ldap/creds/vm_builder"
+/*data "vault_generic_secret" "this" {
+  path = "ldap/creds/vsphere_access"
+}*/
+
+data "vault_ldap_static_credentials" "this" {
+  mount     = "ldap"
+  role_name = "vm_builder"
 }
