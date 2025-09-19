@@ -6,6 +6,15 @@ locals {
   ]
 }
 
+# removed block
+removed {
+  from = module.nsx_credentials
+  lifecycle {
+    destroy = false
+  }
+}
+
+
 module "nsx_credentials" {
   source  = "app.terraform.io/tfo-apj-demos/varsets/tfe"
   version = "~> 0.0"
@@ -16,14 +25,15 @@ module "nsx_credentials" {
 
   varset_variables = [ for variable_name in local.nsx_vars: {
       name = "${variable_name}"
-      value = data.hcp_vault_secrets_secret.nsx["${variable_name}"].secret_value
+      # value = data.hcp_vault_secrets_secret.nsx["${variable_name}"].secret_value
+      value = ""
       category = "env"
     }
   ]
 }
 
-data "hcp_vault_secrets_secret" "nsx" {
-  for_each = toset(local.nsx_vars)
-  app_name    = "nsx-gcve"
-  secret_name = each.value
-}
+# data "hcp_vault_secrets_secret" "nsx" {
+#   for_each = toset(local.nsx_vars)
+#   app_name    = "nsx-gcve"
+#   secret_name = each.value
+# }
