@@ -14,3 +14,7 @@ terraform {
     }
   }
 }
+
+provider "tfe" {
+  organization = "tfo-apj-demos"
+}
