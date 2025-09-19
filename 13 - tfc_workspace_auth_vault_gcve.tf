@@ -32,8 +32,22 @@
 # }
 
 #removed block
+# removed {
+#   from = module.workspace_auth_vault_gcve
+#   lifecycle {
+#     destroy = false
+#   }
+# }
+
 removed {
-  from = module.workspace_auth_vault_gcve
+  from = module.workspace_auth_vault_gcve.tfe_variable_set.this
+  lifecycle {
+    destroy = false
+  }
+}
+
+removed {
+  from = module.workspace_auth_vault_gcve.tfe_variable.this
   lifecycle {
     destroy = false
   }
