@@ -1,19 +1,10 @@
-locals {
-  nsx_vars = [
-    "NSXT_USERNAME",
-    "NSXT_PASSWORD",
-    "NSXT_MANAGER_HOST"
-  ]
-}
-
-# removed block
-removed {
-  from = module.nsx_credentials
-  lifecycle {
-    destroy = false
-  }
-}
-
+# locals {
+#   nsx_vars = [
+#     "NSXT_USERNAME",
+#     "NSXT_PASSWORD",
+#     "NSXT_MANAGER_HOST"
+#   ]
+# }
 
 # module "nsx_credentials" {
 #   source  = "app.terraform.io/tfo-apj-demos/varsets/tfe"

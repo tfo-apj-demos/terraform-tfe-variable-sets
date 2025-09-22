@@ -28,11 +28,3 @@
 #   app_name    = "hcp-boundary"
 #   secret_name = each.value
 # }
-
-#remove block
-removed {
-  from = module.boundary_service_account
-  lifecycle {
-    destroy = false
-  }
-}

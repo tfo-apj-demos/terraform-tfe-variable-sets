@@ -30,25 +30,3 @@
 #   app_name    = "gcve-tfc-workspace-identity"
 #   secret_name = each.value
 # }
-
-#removed block
-removed {
-  from = module.workspace_auth_vault_gcve
-  lifecycle {
-    destroy = false
-  }
-}
-
-# removed {
-#   from = module.workspace_auth_vault_gcve.tfe_variable_set.this
-#   lifecycle {
-#     destroy = false
-#   }
-# }
-
-# removed {
-#   from = module.workspace_auth_vault_gcve.tfe_variable.this
-#   lifecycle {
-#     destroy = false
-#   }
-# }
