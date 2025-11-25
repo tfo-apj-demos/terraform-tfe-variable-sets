@@ -14,3 +14,8 @@ terraform {
     }
   }
 }
+
+// add skip_tls_verify
+provider "vault" {
+  skip_tls_verify = true
+}
