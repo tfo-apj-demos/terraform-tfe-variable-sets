@@ -5,9 +5,9 @@ on:
   push:
     branches:
       - main
-  schedule:
-        - cron:  '0 */8 * * *'
-        
+  # Scheduled rotation retired 2026-07-09: __gcve_vcenter_variables is now static
+  # (no rotating VSPHERE_PASSWORD to refresh). Applies run on push / manual dispatch.
+
 
 env:
   TF_CLOUD_ORGANIZATION: "tfo-apj-demos"
