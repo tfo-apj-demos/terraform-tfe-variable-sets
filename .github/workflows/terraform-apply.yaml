@@ -5,8 +5,9 @@ on:
   push:
     branches:
       - main
-  # Scheduled rotation retired 2026-07-09: the vcenter varset is now static (no
-  # rotating VSPHERE_PASSWORD to refresh). Applies run on push / manual dispatch only.
+  schedule:
+        - cron:  '0 */8 * * *'
+        
 
 env:
   TF_CLOUD_ORGANIZATION: "tfo-apj-demos"
